@@ -1,0 +1,42 @@
+/* 
+
+The one style sheet for final project Part 1: Quotes Enhanced
+
+Authors: Rick Mercer, Hasanain Jamal, and W3C schools
+
+*/
+h1 {
+	text-align: center;
+	font-family: cursive;
+}
+
+.container {
+	vertical-align: text-top;
+	border: 2px black solid;
+	border-radius: 7px;
+	padding: 5px;
+	margin: 5px;
+}
+
+.quote {
+	font-family: cursive;
+	font-size: 1.1em;
+	float: left;
+}
+
+#rating {
+	font-size: 1.5em;
+	font-family: "Arial";
+}
+
+.buttons {
+	width: 30px;
+	height: 50px;
+	float: left;
+}
+
+.author {
+	clear: both;
+	text-align: left;
+	width: 300px;
+}
