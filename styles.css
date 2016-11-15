@@ -18,6 +18,12 @@ h1 {
 	margin: 5px;
 }
 
+.addQuoteCSS{
+	border-radius: 7px;
+	border: 2px black solid;
+	width: 40%;
+}
+
 .quote {
 	font-family: cursive;
 	font-size: 1.1em;

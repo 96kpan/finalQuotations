@@ -6,17 +6,28 @@ This form will be absorbed by the controller
 Authors: Rick Mercer and Hassanain Jamal
 -->
 
-<h3>Add a Quote</h3>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<title>Project 6 -- Receipt</title>
+</head>
+<body class="addQuoteCSS">
 
-TODO: Style this with a border, rounded edges
-<p></p>
-TODO: Add client side validation. Require some text in both input fields 
-<p></p>
-	
-<form action="controller.php" method="post">
-	<span class="labels">&nbsp;Quote:&nbsp;</span><textarea name="quote" cols="60" rows="5" placeholder="Enter new quote"></textarea>
-    <p></p>
-	<span class="labels">Author:&nbsp;</span><input type="text" name="author" placeholder="Author">
-    <p></p>
-	<span class="labels"></span><input type="submit"  name="submit" value="Add Quote">
-</form>	
+	<h3>Add a Quote</h3>
+
+	<form action="controller.php" method="post">
+		<span class="labels">&nbsp;Quote:&nbsp;</span>
+		<textarea name="quote" cols="60" rows="5"
+			placeholder="Enter new quote" required></textarea>
+		<p></p>
+		<span class="labels">Author:&nbsp;</span>
+		<input type="text" name="author" placeholder="Author" pattern="[A-Za-z]*" required size="10" maxlength="80"/>
+		<p></p>
+		<span class="labels"></span><input type="submit" name="submit"
+			value="Add Quote">
+	</form>
+
+</body>
+</html>
