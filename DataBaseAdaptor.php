@@ -1,11 +1,11 @@
  <?php
-	// Quotes Enhanced: a Dynamic Website that is Part 1 of a final project 
+	// Quotes Enhanced: a Dynamic Website that is Part 1 of a final project
 	// as a final project, except there is no AJAX in this example.
 	//
 	// Author: Rick Mercer and Hassanain Jamal
 	//
-	// TODO: Handle the two new forms for 
-	// registering 
+	// TODO: Handle the two new forms for
+	// registering
 	// logging in
 	// flagging one quote
 	// unflagging all quotes
@@ -44,7 +44,7 @@
 			$stmt->execute ();
 			return $stmt->fetchAll ( PDO::FETCH_ASSOC );
 		}
-		
+	
 		// Insert a new quote into the database
 		public function addNewQuote($quote, $author) {
 			$stmt = $this->DB->prepare ( "INSERT INTO quotations (added, quote, author, rating, flagged ) values(now(), :quote, :author, 0, 'f')" );
@@ -67,11 +67,24 @@
 			$stmt->execute ();
 		}
 		
+		// this will toggle the flag element in the database. If it is already flagged (1), then we can unflag it (0).
+		// likewise, if it already unflagged (0), then we will change it to flag (1)
+		public function flag($ID) {
+			$stmt = $this->DB->prepare ( "UPDATE quotations SET flagged='t' WHERE id= :ID" );
+			$stmt->bindParam ( 'ID', $ID );
+			$stmt->execute ();
+		}
+		
+		// Clicking unflag all makes ALL quotations show up
+		public function unflagAll() {
+			$stmt = $this->DB->prepare ( "update quotations set flagged='f'" );
+			$stmt->execute ();
+		}
 	} // end class DatabaseAdaptor
 	
 	$myDatabaseFunctions = new DatabaseAdaptor ();
 	
-	// Test code can only be used temporarily here. If kept, deleting account 'fourth' from anywhere would 
+	// Test code can only be used temporarily here. If kept, deleting account 'fourth' from anywhere would
 	// cause these asserts to generate error messages. And when did you find out 'fourth' is registered?
 	// assert ( $myDatabaseFunctions->verified ( 'fourth', '4444' ) );
 	// assert ( ! $myDatabaseFunctions->canRegister ( 'fourth' ) );

@@ -13,6 +13,8 @@
 //
 require_once './DataBaseAdaptor.php';
 
+$action = $_POST ['action'];
+
 if (isset ( $_POST ['author'] ) && isset ( $_POST ['quote'] )) {
 	$author = $_POST ['author'];
 	$quote = $_POST ['quote'];
@@ -30,6 +32,16 @@ if (isset ( $_POST ['author'] ) && isset ( $_POST ['quote'] )) {
 	if ($action === 'flag') {
 		$myDatabaseFunctions->flag ( $ID );
 	}
-	  header ( "Location: ./index.php?mode=showQuotes" );
+	
+	header ( "Location: ./index.php?mode=showQuotes" );
 }
+if ($action === 'register') {
+	header ( "Location: ./register.html" );
+}
+if ($action === 'login') {
+	header ( "Location: ./login.html" );
+}
+if ($action === 'addQuote') {
+	header ( "Location: ./addQuote.html" );
+} 
 ?>

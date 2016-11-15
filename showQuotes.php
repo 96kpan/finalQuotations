@@ -20,10 +20,21 @@ $arrayOfQuotes = $myDatabaseFunctions->getQuotesAsArray ();
 
 <h1>Quotes</h1>
 
+<form action="controller.php" method="post">
+	&nbsp;&nbsp;&nbsp;
+	<button name="action" value="register">Register</button>
+	&nbsp;&nbsp;&nbsp;
+	<button name="action" value="login">Login</button>
+	&nbsp;&nbsp;&nbsp;
+	<button name="action" value="addQuote">Add Quote</button>
+</form>
+
 <!-- Add a horizontal menu -->
 
+
+
 <a href="addQuote.html">Add Quote</a>
-	<br>
+<br>
 
 <?php
 session_start (); // Need this in each file before $_SESSION['key'] is used.
@@ -46,9 +57,10 @@ session_start (); // Need this in each file before $_SESSION['key'] is used.
 		&nbsp;&nbsp;&nbsp;
 		<button name="action" value="increase">+</button>
 
-		 <span id="rating"> <?= $quote['rating']?> </span>
+		<span id="rating"> <?= $quote['rating']?> </span>
 		<button name="action" value="decrease">-</button>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="flag"> </span>
+		<button name="action" value="flag">Flag</button>
 	</form>
 
 </div>
