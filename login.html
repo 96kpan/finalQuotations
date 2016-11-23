@@ -5,18 +5,28 @@ This form will be absorbed by the controller using the form
 
 Authors: Rick Mercer and Hassanain Jamal
 -->
-<h3>Login</h3>
+<?php session_start ();?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<title>Project 8</title>
+</head>
+<body class="user">
+	<h3>Login</h3>
+	<?php
+	if (isset ( $_SESSION ['error'] )) {
+		if ($_SESSION ['error'] === "yes") {
+			echo "<div class='error'> INCORRECT USERNAME OR PASSWORD </div>";
+			$_SESSION ['error'] = "no";
+		}
+	}
+	?>
+	<form action="./controller.php" method="post">
+		Username <input type="text" name="username" pattern=".{4,}" required><br><br>
+		Password <input type="password" name="password" pattern=".{6,}"
+			required><br><br> <input type="submit" value="login">
+	</form>
 
-<?php
-  session_start (); // need this in any file using $_SESSION['index'];
-?>
-<p></p>
-TODO: Style this with a border, rounded edges
-<br>
-TODO: Add a form to login
-<br>
-TODO: Add client side validation to ensure text is in both input fields 
-<br>
-TODO: Add server side validation.  Notfify if login failed, clear the input fields
-<br>
-TDOO: use session_start (); and echo a message if the login failed
+</body>
+</html>

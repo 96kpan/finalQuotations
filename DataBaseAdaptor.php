@@ -80,6 +80,51 @@
 			$stmt = $this->DB->prepare ( "update quotations set flagged='f'" );
 			$stmt->execute ();
 		}
+		
+		// find username in db
+		public function getPassword($username){
+			$stmt = $this->DB->prepare("SELECT password FROM users WHERE username = :username");
+			$stmt->bindParam ( 'username', $username );
+			$stmt->execute ();
+			return $stmt->fetchAll ( PDO::FETCH_ASSOC );
+		}
+		
+		// add user
+		public function addUser($username, $password){
+			$stmt = $this->DB->prepare("select username from users where username = :username");
+			$stmt->bindParam ('username', $username);
+			$stmt->execute();
+			$result = $stmt->fetchAll ( PDO::FETCH_ASSOC );
+			if(count($result)!=0){
+				return 1;
+			}
+			else{
+				$hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
+				$stmt = $this->DB->prepare ( "INSERT INTO users (username, password) values(:username, :password)" );
+				$stmt->bindParam ( 'username', $username );
+				$stmt->bindParam ( 'password', $hashed_pwd );
+				$stmt->execute ();
+				return 0;
+			}
+		}
+		
+		public function login($username, $password){
+			$stmt = $this->DB->prepare("SELECT password FROM users WHERE username = :user");
+			$stmt->bindParam ( 'user', $username );
+			$stmt->execute ();
+			$hash = $stmt->fetch();
+			if(count($hash)!=0){
+				if(password_verify($password, $hash['password'])){
+					return 0;
+				}
+				else{
+					return 1;
+				}
+			}
+			else{
+				return 1;
+			}
+		}
 	} // end class DatabaseAdaptor
 	
 	$myDatabaseFunctions = new DatabaseAdaptor ();

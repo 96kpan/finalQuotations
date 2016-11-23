@@ -14,8 +14,11 @@ Author: Rick Mercer
 -->
 
 <?php
+
 require_once './DataBaseAdaptor.php';
+
 $arrayOfQuotes = $myDatabaseFunctions->getQuotesAsArray ();
+
 ?>
 
 <h1>Quotes</h1>
@@ -27,18 +30,26 @@ $arrayOfQuotes = $myDatabaseFunctions->getQuotesAsArray ();
 	<button name="action" value="login">Login</button>
 	&nbsp;&nbsp;&nbsp;
 	<button name="action" value="addQuote">Add Quote</button>
+	<?php
+
+	session_start ();
+
+	if (isset ( $_SESSION ['key'] )) {
+
+	?>
+	&nbsp;&nbsp;&nbsp;
+	<button name="action" value="unflag">Unflag All</button>
+	&nbsp;&nbsp;&nbsp;
+	<button name="action" value="logout">Logout</button>
+	<?php
+
+	}
+
+	?>
 </form>
 
 <!-- Add a horizontal menu -->
 
-
-
-<a href="addQuote.html">Add Quote</a>
-<br>
-
-<?php
-session_start (); // Need this in each file before $_SESSION['key'] is used.
-?>
 
 <!--  Show all quotes on a separate row -->
 <?php foreach($arrayOfQuotes as $quote) { ?>

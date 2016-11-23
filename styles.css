@@ -5,6 +5,7 @@ The one style sheet for final project Part 1: Quotes Enhanced
 Authors: Rick Mercer, Hasanain Jamal, and W3C schools
 
 */
+
 h1 {
 	text-align: center;
 	font-family: cursive;
@@ -18,10 +19,12 @@ h1 {
 	margin: 5px;
 }
 
-.addQuoteCSS{
-	border-radius: 7px;
+.addQuoteCSS {
+	vertical-align: text-top;
 	border: 2px black solid;
-	width: 40%;
+	border-radius: 7px;
+	padding: 5px;
+	margin: 5px;
 }
 
 .quote {
@@ -45,4 +48,21 @@ h1 {
 	clear: both;
 	text-align: left;
 	width: 300px;
+}
+
+.user {
+	vertical-align: text-top;
+	border: 2px black solid;
+	border-radius: 7px;
+	padding: 5px;
+	margin: 5px;
+}
+
+.error {
+	background-color: pink;
+	color: red;
+	border: 2px red solid;
+	border-radius: 7px;
+	padding: 5px;
+	margin: 5px;
 }

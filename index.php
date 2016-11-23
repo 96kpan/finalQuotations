@@ -25,9 +25,9 @@ if (isset ( $_GET ['mode'] )) {
   elseif ($_GET ['mode'] === 'new')
     require_once ("./addQuote.html");
   elseif ($_GET ['mode'] === 'login')
-    require_once ("./login.html");
+    require_once ("./login.php");
   elseif ($_GET ['mode'] === 'register')
-    require_once ("./register.html");
+    require_once ("./register.php");
 } else // default
   require_once ("./showQuotes.php");
 

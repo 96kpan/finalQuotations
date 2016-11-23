@@ -5,15 +5,29 @@ This form will be absorbed by the controller
 
 Authors: Rick Mercer and Hassanain Jamal
 -->
-
-session_start (); // Need this in each file before $_SESSION['key'] is used.
-
-<h3>Register</h3>
-
-TODO: Style this with a border, rounded edges
-<p></p>
-TODO: Add a form to login
-<p></p>
-TDOO: use session_start (); and echo a message if the user name is already taken
-<p></p>
-Feel free to add a first and last name in addtion to the user name and password	
+<?php session_start();?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<title>Project 8</title>
+</head>
+<body class="user">
+	<h3>Register</h3>
+	<?php
+	if (isset ( $_SESSION ['error'] )) {
+		if ($_SESSION ['error'] === "yes") {
+			echo "<div class='error'> USERNAME ALREADY TAKEN. PLEASE SELECT A DIFFERENT USERNAME. </div>";
+			$_SESSION ['error'] = "no";
+		}
+	}
+	?>
+	<form action="./controller.php" method="post">
+		Username <input type="text" name="create_username" pattern=".{4,}"
+			required><br>
+		<br> Password <input type="text" name="create_password"
+			pattern=".{6,}" required><br>
+		<br> <input type="submit" value="register">
+	</form>
+</body>
+</html>
